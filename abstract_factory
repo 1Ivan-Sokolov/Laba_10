@@ -1,0 +1,77 @@
+from abc import ABC, abstractmethod
+
+class Car(ABC):
+    @abstractmethod
+    def get_brand(self):
+        pass
+
+    @abstractmethod
+    def get_model(self):
+        pass
+
+class SportCar(Car):
+
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+        self.type = "Sport"
+
+    def get_brand(self):
+        return self.brand
+
+    def get_model(self):
+        return self.brand
+
+    def get_type(self):
+        return self.brand
+
+class SUVCar(Car):
+
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+        self.type = "SUV"
+
+    def get_brand(self):
+        return self.brand
+
+    def get_model(self):
+        return self.brand
+
+    def get_type(self):
+        return self.brand
+
+class CarFactory(ABC):
+    @abstractmethod
+    def create_sport_car(self, brand, model):
+        pass
+
+    @abstractmethod
+    def create_suv_car(self, brand, model):
+        pass
+
+class  BMWCarFactory(CarFactory):
+    def create_sport_car(self, brand, model):
+        return SportCar(brand, model)
+
+    def create_suv_car(self, brand, model):
+        return SUVCar(brand, model)
+
+class MercedesCarFactory(CarFactory):
+    def create_sport_car(self, brand, model):
+        return SportCar(brand, model)
+        
+    def create_suv_car(self, brand, model):
+        return SUVCar(brand, model)
+
+bmw_factory = BMWCarFactory()
+mercedes_factory = MercedesCarFactory()
+bmw_sport_car = bmw_factory.create_sport_car("BMW", "M3")
+print(bmw_sport_car.get_brand())
+print(bmw_sport_car.get_model())
+print(bmw_sport_car.get_type())
+
+mercedes_suv_car = mercedes_factory.create_suv_car("Mercedes", "GLS")
+print(mercedes_suv_car.get_brand())
+print(mercedes_suv_car.get_model())
+print(mercedes_suv_car.get_type())
