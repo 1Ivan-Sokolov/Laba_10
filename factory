@@ -1,0 +1,32 @@
+from abc import ABC, abstractmethod
+
+class Car:
+    @abstractmethod
+    def auto(self):
+        pass
+
+class ElectricCar(Car):
+    def __init__(self, name):
+        self.name=name
+
+    def charge(self):
+        print(f'{self.name} is charning')
+
+class PetrolCar(Car):
+    def __init__(self, name):
+        self.name=name
+
+    def refuel(self):
+        print(f'{self.name} is refuel')
+
+class CarFactory:
+    @abstractmethod
+    def create_car(self, car_type, name):
+        if car_type == 'electric':
+            return ElectricCar('Tesla')
+        elif car_type == 'petrol':
+            return ElectricCar('Volkswagen Jetta')
+
+factory = CarFactory()
+car = factory.create_car('electric')
+print(car)
