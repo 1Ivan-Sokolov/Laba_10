@@ -25,7 +25,7 @@ class CarFactory:
         if car_type == 'electric':
             return ElectricCar('Tesla')
         elif car_type == 'petrol':
-            return ElectricCar('Volkswagen Jetta')
+            return PetrolCar('Volkswagen Jetta')
 
 factory = CarFactory()
 car = factory.create_car('electric')
